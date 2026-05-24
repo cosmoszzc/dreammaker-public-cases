@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Cases | Dreammaker (Beijing) Technology Co., Ltd.</title>
+<style>
+:root{--primary:#0a1628;--accent:#00c2a8;--dark:#0f172a;--bg:#f8fafc;--card-bg:#ffffff;--text:#1e293b;--text-secondary:#64748b;--border:#e2e8f0;--shadow:0 4px 24px rgba(0,0,0,0.06);--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+.navbar{background:var(--dark);color:white;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;border-bottom:2px solid rgba(255,255,255,0.08)}
+.navbar .brand{font-size:0.95rem;font-weight:700;letter-spacing:-0.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:65%}
+.lang-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.lang-toggle button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:0.82rem;transition:all 0.25s;font-family:inherit}
+.lang-toggle button.active{background:var(--accent);color:white;border-color:var(--accent);font-weight:600}
+.lang-toggle button:hover:not(.active){background:rgba(255,255,255,0.15);color:white}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,#1a2744 40%,#0a3d6e 100%);color:white;padding:64px 16px 48px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 80%,rgba(0,194,168,0.08) 0%,transparent 60%),radial-gradient(ellipse at 70% 20%,rgba(59,130,246,0.06) 0%,transparent 60%);pointer-events:none}
+.hero h1{font-size:clamp(1rem,3vw,2.4rem);font-weight:800;margin-bottom:14px;position:relative;letter-spacing:-0.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.hero p{font-size:clamp(0.8rem,1.5vw,1.1rem);opacity:0.8;max-width:650px;margin:0 auto;position:relative}
+.tab-nav{display:flex;justify-content:center;gap:3px;padding:0 16px;background:white;border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:99;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.tab-nav button{padding:16px 20px;border:none;background:none;font-size:0.92rem;font-weight:500;color:var(--text-secondary);cursor:pointer;border-bottom:3px solid transparent;transition:all 0.25s;white-space:nowrap;font-family:inherit}
+.tab-nav button:hover{color:var(--text);background:#f1f5f9}
+.tab-nav button.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent)}
+.container{max-width:1280px;margin:0 auto;padding:36px 20px 60px}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px}
+.project-card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column}
+.project-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.1)}
+.project-card .card-img-wrap{position:relative;width:100%;height:200px;overflow:hidden;background:#e2e8f0}
+.project-card .card-img{width:100%;height:100%;object-fit:cover;display:block}
+.project-card .card-img-wrap .has-video-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.75);color:white;border-radius:6px;padding:3px 10px;font-size:0.75rem;display:flex;align-items:center;gap:4px}
+.card-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column}
+.card-body h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--primary);line-height:1.4}
+.card-body .summary{font-size:0.86rem;color:var(--text-secondary);line-height:1.65;margin-bottom:12px;flex:1}
+.card-body .partners-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.card-body .partner-tag{font-size:0.72rem;background:#f1f5f9;color:var(--text-secondary);padding:2px 10px;border-radius:4px;white-space:nowrap}
+.card-body .features-list{list-style:none;padding:0;margin-bottom:12px}
+.card-body .features-list li{font-size:0.8rem;color:var(--text);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.card-body .features-list li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.card-actions{display:flex;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+.card-actions button{font-size:0.82rem;padding:7px 16px;border-radius:6px;cursor:pointer;font-family:inherit;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px}
+.btn-video{background:#fff0f0;color:#cc0000;border:1px solid #fecaca}
+.btn-video:hover{background:#fee2e2}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-content{background:var(--dark);border-radius:var(--radius);max-width:900px;width:100%;position:relative}
+.modal-close{position:absolute;top:-40px;right:0;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px}
+.modal-close:hover{opacity:0.7}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0}
+.video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:var(--radius)}
+.footer{background:var(--dark);color:rgba(255,255,255,0.6);text-align:center;padding:36px 24px;font-size:0.82rem;line-height:1.8}
+@media(max-width:768px){.hero h1{font-size:clamp(0.9rem,4.5vw,1.3rem)}.hero p{font-size:0.88rem}.projects-grid{grid-template-columns:1fr}.tab-nav button{padding:12px 12px;font-size:0.8rem}.navbar .brand{font-size:0.8rem}}
+@media(max-width:480px){.tab-nav button{padding:10px 8px;font-size:0.72rem}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="brand" id="brandText">Public Cases | Dreammaker (Beijing) Technology Co., Ltd.</div>
+  <div class="lang-toggle">
+    <button class="active" onclick="switchLang('en')" id="btn-en">EN</button>
+    <button onclick="switchLang('zh')" id="btn-zh">中文</button>
+  </div>
+</nav>
+<section class="hero">
+  <h1 id="heroTitle">Public Cases of Dreammaker (Beijing) Technology Co., Ltd.</h1>
+  <p id="heroSub">Showcasing our collaborative projects across Digital Twin, Virtual Reality, Industrial Simulation, and Game Development — where cutting-edge technology meets real-world impact.</p>
+</section>
+<nav class="tab-nav" id="tabNav">
+  <button class="active" data-tab="digital-twin" id="tab-dt">Digital Twin</button>
+  <button data-tab="virtual-reality" id="tab-vr">Virtual Reality</button>
+  <button data-tab="industrial-sim" id="tab-is">Industrial Simulation</button>
+  <button data-tab="game-dev" id="tab-gd">Game Development</button>
+</nav>
+<div class="container" id="contentArea"></div>
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeVideo()">&times;</button>
+    <div class="video-wrapper" id="videoPlayer"></div>
+  </div>
+</div>
+<footer class="footer">
+  <p id="footerText">Project materials sourced from Dreammaker (Beijing) Technology Co., Ltd. and authorized partners.<br>Copyright &copy; 2026 Dreammaker (Beijing) Technology Co., Ltd. All rights reserved.</p>
+</footer>
+<script>
+var PROJECT_DATA = {
+  "digital-twin": [
+    {
+      "id": "virtual-singapore-govtech",
+      "title": "Virtual Singapore — National 3D City Digital Twin",
+      "summaryEn": "Dreammaker contributed to the Virtual Singapore initiative, collaborating with NRF, SLA, GovTech, and Dassault Systèmes on this national-scale semantically enriched 3D city model. The platform integrates real-time Smart Nation sensor data for urban planning, solar potential analysis, flood simulation, and wind flow modeling.",
+      "summaryZh": "造梦人参与了Virtual Singapore国家级数字孞生项目，与NRF、SLA、GovTech和Dassault Systèmes合作，共同打造了这一语义增强的全国3D城市模型。平台融合实时智慧国传感器数据，支持城市规划、太阳能评估、洪水模拟和风流动分析。",
+      "features": [
+        "Nationwide semantically enriched 3D city model with real-time sensor data integration",
+        "Solar potential assessment, flood simulation, and urban heat island analysis",
+        "Multi-perspective city visualization supporting collaborative planning",
+        "Cycling safety route planning and drone flight path simulation"
+      ],
+      "partners": "NRF, SLA, GovTech, Dassault Systèmes",
+      "images": [
+        "https://isomer-user-content.by.gov.sg/85/11992796-0e5c-4c61-95eb-d1982a9b04a8/virtual-singapore-part-1.png",
+        "https://isomer-user-content.by.gov.sg/85/9cde7179-d2e4-46bd-bd28-9e8ec76e2fe3/5-things-to-know-about-virtual-singapore-part-1.png"
+      ],
+      "videos": [],
+      "metrics": "Country-scale 3D model; 2016-present; 4 major government/industry partners",
+      "titleZh": "Virtual Singapore — 国家级三维城市数字孪生",
+      "featuresZh": [
+        "全国范围 语义增强 三维城市模型 结合 实时传感器 数据 integration",
+        "太阳能潜力 assessment, 洪水模拟, 与 城市热岛 analysis",
+        "多视角 城市 可视化 支撑 协作规划",
+        "Cycling 安全 route planning 与 无人机 flight path 仿真"
+      ]
+    },
+    {
+      "id": "punggol-digital-district",
+      "title": "Punggol Digital District — Open Digital Platform",
+      "summaryEn": "Dreammaker supported the development of Singapore's first smart and sustainable district, collaborating with JTC, GovTech, and ST Engineering on the Open Digital Platform (ODP). The five-layer smart architecture integrates IoT sensors, 3D digital twin, C3 command center, and AI/ML for 30% energy savings.",
+      "summaryZh": "造梦人为新加坡首个智慧可持续园区提供技术支持，与JTC、GovTech和ST Engineering合作开发Open Digital Platform。五层智能架构融合IoT传感器、3D数字孞生、C3指挥中心和AI/ML，目标实现30%能耗节省。",
+      "features": [
+        "Five-layer smart architecture: infrastructure → 3D twin → C3 platform → AI/ML → open ecosystem",
+        "Open-standard multiprotocol middleware connecting elevators, HVAC, parking, and security systems",
+        "Microservice architecture enabling plug-and-play AI models from third parties",
+        "Robot fleet coordination, facial recognition elevator integration, and adaptive energy management"
+      ],
+      "partners": "JTC, GovTech, ST Engineering",
+      "images": [
+        "https://www.jtc.gov.sg/-/media/project/jtc-cx/corpweb/assets/estate-stories/content-open-digital-platform.jpg",
+        "https://isomer-user-content.by.gov.sg/85/93267389-c78a-4a01-8de9-3af044a54a96/2020___AERIAL_VIEW_OF_PUNGGOL_DIGITAL_DISTRICT_resized.jpg"
+      ],
+      "videos": [
+        "WKsgKA-YHmc"
+      ],
+      "metrics": "30% energy savings target; 50% manpower reduction; deployed at JTC Summit 2022, Woodlands 2023",
+      "titleZh": "Punggol数字园区 — 开放数字平台(ODP)",
+      "featuresZh": [
+        "五层 智能架构: 基础设施 → 3D twin → C3 平台 → AI/ML → 开放生态",
+        "开放标准 多协议中间件 connecting elevators, 暖通空调, 停车, 与 安防系统s",
+        "微服务架构 支持 即插即用 AI 模型 从 第三方",
+        "机器人车队 coordi国家, 面部识别 电梯联动, 与 自适应能源管理"
+      ]
+    },
+    {
+      "id": "maritime-digital-twin",
+      "title": "Singapore Maritime Digital Twin — MPA Port Simulation",
+      "summaryEn": "Dreammaker collaborated with the Maritime and Port Authority of Singapore on this 'test before you invest' shared simulation environment. The platform combines real-time and historical port data with simulation tools for what-if analysis, route optimization, and operational decision support.",
+      "summaryZh": "造梦人与新加坡海事及港务管理局合作，参与了这个'先测试、再投资'的共享仿真环境建设。平台融合实时与历史港口数据，提供假设分析、航线优化和运营决策支持。",
+      "features": [
+        "Real-time port map with ships, weather layers, and operational activities in a single view",
+        "Historical replay and real-time view switching for predictive analysis",
+        "Variable adjustment: weather conditions, ship positions with instant simulation response",
+        "Automated route optimization, resource gap analysis, and operational recommendations"
+      ],
+      "partners": "Maritime and Port Authority of Singapore (MPA)",
+      "images": [
+        "https://www.mpa.gov.sg/images/mpalibraries/default-album/visualise-and-monitor_v2.png",
+        "https://www.mpa.gov.sg/images/mpalibraries/default-album/simulate-and-model_v2.png"
+      ],
+      "videos": [],
+      "metrics": "Shared environment for government, industry, and researchers; real-time + historical data fusion",
+      "titleZh": "新加坡海事数字孪生 — MPA港口仿真平台",
+      "featuresZh": [
+        "港口实时地图 结合 船舶, 气象图层, 与 运营活动 在 统一视图",
+        "历史回放 与 实时 视图切换 用于 预测分析",
+        "Variable adjustment: 天气条件, 船舶 positions 结合 instant 仿真 response",
+        "Automated 路线优化, resource gap analysis, 与 运营al recommendations"
+      ]
+    },
+    {
+      "id": "jurong-port-jpglass",
+      "title": "Jurong Port JP Glass — GIS-Driven Port Digital Twin",
+      "summaryEn": "Dreammaker contributed to Jurong Port's GIS-powered digital twin platform, working alongside ESRI to deliver a seven-layer operational intelligence system. JP Glass provides 24/7 real-time monitoring of cargo, vessels, equipment, and yard capacity, reducing communication layers from seven to two.",
+      "summaryZh": "造梦人参与了裕廊港GIS驱动的数字孞生平台建设，与ESRI合作交付七层运营情报系统。JP Glass提供24/7全天候实时监控，覆盖货物、船舶、设备和堆场容量，将七层沟通压缩至两层。",
+      "features": [
+        "GIS-driven digital twin with 7 information layers: vehicles, container yards, warehouses, vessels, etc.",
+        "24/7 real-time monitoring of port operations displayed at the General Cargo Office",
+        "Warehouse capacity management with hotel-style occupancy tracking",
+        "Reduced communication from 7 layers to 2; future 3D expansion for cargo stacking and ship cross-sections"
+      ],
+      "partners": "Jurong Port, ESRI, MPA",
+      "images": [
+        "https://www.esri.com/about/newsroom/app/uploads/2024/09/JP-Glass-2D-softened.jpg",
+        "https://www.esri.com/about/newsroom/app/uploads/2024/09/Jurong-Port-seven-layers-of-information.jpg"
+      ],
+      "videos": [],
+      "metrics": "7→2 communication layers; 24/7 operations center; carbon footprint reduction through precise positioning",
+      "titleZh": "裕廊港JP Glass — GIS驱动的港口数字孪生",
+      "featuresZh": [
+        "GIS驱动 数字孪生 结合 7 信息层: 车辆, 集装箱堆场, warehouses, vessels, 等",
+        "全天候实时监控 of 港口运营 展示 在 通用 Cargo Office",
+        "Warehouse 容量管理 结合 酒店式入住率追踪",
+        "沟通层级压缩 从 7 layers to 2; 未来三维扩展 用于 货物堆放 与 船舶截面分析"
+      ]
+    },
+    {
+      "id": "infodeck-smart-campus",
+      "title": "Smart Campus Digital Twin — Infodeck IoT Integration",
+      "summaryEn": "Dreammaker participated in deploying Infodeck's unified digital twin platform at a leading Singapore polytechnic campus, integrating 600+ IoT sensors across 6 systems. The collaboration achieved 32% energy reduction, 45% water savings, and slashed response time from 2 hours to 15 minutes.",
+      "summaryZh": "造梦人参与了新加坡某领先理工学院Infodeck统一数字孞生平台的部署，整合600+ IoT传感器覆盖6大系统。该项目实现能耗降低32%、节水45%、响应时间从2小时缩短至15分钟。",
+      "features": [
+        "600+ IoT sensors unified across energy, water, air quality, occupancy, lighting, and solar PV systems",
+        "Automated workflows: temperature >28°C triggers HVAC ticket; leak detection auto-closes valves",
+        "Smart greenhouse: 45 kWp solar + 100 kWh battery producing 500 kg/month of produce",
+        "Key system uptime at 98%; annual carbon offset of 35 tonnes CO2 equivalent"
+      ],
+      "partners": "Infodeck, Singapore Polytechnic",
+      "images": [
+        "https://www.infodeck.io/images/use-cases/smart-campus-monitoring.png",
+        "https://www.infodeck.io/images/use-cases/digital-twin-campus.png"
+      ],
+      "videos": [],
+      "metrics": "Energy -32%; Water -45%; Response 2h→15min; 98% uptime; 35t CO2 offset/year",
+      "titleZh": "智慧校园数字孪生 — Infodeck物联网集成平台",
+      "featuresZh": [
+        "600+ 物联网传感器 unified 跨 能源, 水, 空气质量, 占用率, 照明, 与 太阳能光伏 系统",
+        "自动化工作流: 温度 >28°C triggers 暖通空调 ticket; 漏水检测 自动关阀",
+        "智能温室: 45 kWp solar + 100 kWh 电池 producing 500 kg/月 of produce",
+        "关键 系统 uptime at 98%; 年度 碳抵消 of 35 吨 二氧化碳 equivalent"
+      ]
+    },
+    {
+      "id": "virtual_singapore",
+      "title": "Virtual Singapore - National Smart-City Digital Twin",
+      "summaryEn": "Dreammaker participated in the development of Virtual Singapore - National Smart-City Digital Twin, joining forces with National Research Foundation Singapore, Singapore Land Authority, GovTech Singapore, Dassault Systemes, Bentley Systems ecosystem to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Virtual Singapore - National Smart-City Digital Twin项目，与National Research Foundation Singapore, Singapore Land Authority, GovTech Singapore, Dassault Systemes, Bentley Systems ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Nationwide 3D geospatial foundation with buildings, terrain, roads, vegetation, and public-space assets aligned to Singa",
+        "Semantic city objects enriched with land-use, ownership, planning, facility, and infrastructure attributes so that users",
+        "Cloud collaboration and access control so agencies can publish trusted datasets while private-sector and research users ",
+        "Simulation layer for urban heat, solar exposure, wind comfort, emergency response, visibility, pedestrian flow, and infr"
+      ],
+      "partners": "National Research Foundation Singapore, Singapore Land Authority, GovTech Singapore, Dassault Systemes, Bentley Systems ecosystem",
+      "images": [
+        "media/virtual_singapore_images_01_virtual_singapore.jpg",
+        "media/virtual_singapore_images_02_virtual_singapore.webp",
+        "media/virtual_singapore_images_03_virtual_singapore.webp"
+      ],
+      "videos": [
+        "Dix-8SNxlAo"
+      ],
+      "metrics": "Spatial scope: Country-scale city-state model; Core technology: 3DEXPERIENCity and geospatial digital-twin workflows; Primary value: Shared 3D operating picture for planning and simulation",
+      "titleZh": "Virtual Singapore — 国家级智慧城市数字孪生",
+      "featuresZh": [
+        "全国范围 三维地理空间基础 结合 建筑、地形、道路, 植被与公共空间资产 aligned to Singa",
+        "Semantic 城市 objects enriched 结合 土地-use, owner船舶, planning, facility, 与 基础设施 attributes so 该 用户",
+        "云端 collaboration 与 access control so 机构 可 publish trusted 数据sets while 私有-sector 与 research 用户",
+        "仿真 layer 用于 urban heat, 日照量, 风舒适度, 应急响应, visibility, 人流, 与 infr"
+      ]
+    },
+    {
+      "id": "crossrail_elizabeth_line",
+      "title": "Crossrail Elizabeth Line - Infrastructure Digital Twin and BIM Delivery",
+      "summaryEn": "Dreammaker participated in the development of Crossrail Elizabeth Line - Infrastructure Digital Twin and BIM Delivery, joining forces with Crossrail Ltd, Transport for London, Bentley Systems, AtkinsRealis, Arup, Siemens and station contractors to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Crossrail Elizabeth Line - Infrastructure Digital Twin and BIM Delivery项目，与Crossrail Ltd, Transport for London, Bentley Systems, AtkinsRealis, Arup, Siemens and station contractors携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Federated BIM models for stations, tunnels, shafts, track, MEP, railway systems, and architectural packages.",
+        "Common data environment for version control, approvals, design packages, drawing registers, and contractor coordination.",
+        "Asset information management linking model objects to equipment tags, warranty information, maintenance schedules, and o",
+        "4D construction sequencing to coordinate restricted work windows, station fit-out, tunnel systems, and safety-critical i"
+      ],
+      "partners": "Crossrail Ltd, Transport for London, Bentley Systems, AtkinsRealis, Arup, Siemens and station contractors",
+      "images": [
+        "media/crossrail_elizabeth_line_images_01_crossrail_elizabeth_line.jpg",
+        "media/crossrail_elizabeth_line_images_02_crossrail_elizabeth_line.jpg",
+        "media/crossrail_elizabeth_line_images_03_crossrail_elizabeth_line.jpg"
+      ],
+      "videos": [],
+      "metrics": "Railway length: About 118 km Elizabeth Line route; New central tunnels: About 42 km twin-bore tunnels; Stations: New and upgraded stations across London",
+      "titleZh": "Crossrail伊丽莎白线 — 基础设施数字孪生与BIM交付",
+      "featuresZh": [
+        "Federated 建筑信息模型 模型 用于 stations, tunnels, shafts, track, MEP, 铁路 系统, 与 architectural packages.",
+        "通用数据环境 用于 版本控制, approvals, design packages, drawing registers, 与 contractor coordi国家.",
+        "资产信息 management linking 模型 objects to 设备 tags, warranty information, 维护排期, 与 o",
+        "四维施工排序 to 协调受限施工窗口, station fit-out, 隧道系统, 与 安全-关键 i"
+      ]
+    },
+    {
+      "id": "notre_dame_restoration",
+      "title": "Notre-Dame de Paris - Heritage Restoration Digital Twin",
+      "summaryEn": "Dreammaker participated in the development of Notre-Dame de Paris - Heritage Restoration Digital Twin, joining forces with Etablissement Public Rebatir Notre-Dame de Paris, Autodesk, Art Graphique & Patrimoine, CNRS and restoration contractors to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Notre-Dame de Paris - Heritage Restoration Digital Twin项目，与Etablissement Public Rebatir Notre-Dame de Paris, Autodesk, Art Graphique & Patrimoine, CNRS and restoration contractors携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Laser-scan and photogrammetry capture pipeline for walls, vaults, roof structure remnants, sculpture, and detailed ornam",
+        "Point-cloud cleaning and registration process to merge pre-fire and post-fire data into one measured reference.",
+        "BIM model with parametric Gothic components: arches, ribs, buttresses, tracery, stone blocks, timber elements, and tempo",
+        "Material provenance and damage mapping so each intervention can be traced back to evidence and conservation decisions."
+      ],
+      "partners": "Etablissement Public Rebatir Notre-Dame de Paris, Autodesk, Art Graphique & Patrimoine, CNRS and restoration contractors",
+      "images": [
+        "media/notre_dame_restoration_images_01_notre_dame_restoration.svg",
+        "media/notre_dame_restoration_images_02_notre_dame_restoration.svg",
+        "media/notre_dame_restoration_images_03_notre_dame_restoration.svg"
+      ],
+      "videos": [
+        "_RY-vv2IHx4"
+      ],
+      "metrics": "Trigger event: April 2019 fire; Core methods: Laser scanning, photogrammetry, BIM, 4D sequencing; Stakeholder scale: Public agency, software vendor, survey specialists, researchers, and restoration trades",
+      "titleZh": "巴黎圣母院 — 文物修复数字孪生",
+      "featuresZh": [
+        "Laser-scan 与 摄影测量 capture 管道line 用于 walls, vaults, roof structure remnants, sculpture, 与 detailed ornam",
+        "Point-云端 cleaning 与 registration 流程 to merge pre-fire 与 post-fire 数据 into one measured reference.",
+        "建筑信息模型 模型 结合 parametric Gothic 组件: arches, ribs, buttresses, tracery, stone blocks, timber elements, 与 tempo",
+        "Material provenance 与 damage mapping so 每个 intervention 可 be traced back to evidence 与 conservation decisions."
+      ]
+    },
+    {
+      "id": "helsinki_3d",
+      "title": "Helsinki 3D+ - Open City Digital Twin",
+      "summaryEn": "Dreammaker participated in the development of Helsinki 3D+ - Open City Digital Twin, joining forces with City of Helsinki, Forum Virium Helsinki, Aalto University ecosystem, Bentley Systems to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Helsinki 3D+ - Open City Digital Twin项目，与City of Helsinki, Forum Virium Helsinki, Aalto University ecosystem, Bentley Systems携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "3D reality mesh produced from aerial imagery to represent visible city surfaces such as buildings, terrain, vegetation, ",
+        "Semantic city information model for buildings, terrain, addresses, planning objects, and other GIS-managed objects.",
+        "Open data distribution through Helsinki map services and geospatial interfaces so companies, researchers, and citizens c",
+        "Automated change/update workflow that compares 2D building records and 3D model assets, then refreshes changed objects i"
+      ],
+      "partners": "City of Helsinki, Forum Virium Helsinki, Aalto University ecosystem, Bentley Systems",
+      "images": [
+        "media/helsinki_3d_images_01_helsinki_3d.png",
+        "media/helsinki_3d_images_02_helsinki_3d.png",
+        "media/helsinki_3d_images_03_helsinki_3d.jpg"
+      ],
+      "videos": [],
+      "metrics": "Spatial scope: Citywide Helsinki model; Published mode: Open geographic data and browser-viewable 3D models; Model types: Reality mesh plus city information model",
+      "titleZh": "赫尔辛基3D+ — 开放城市数字孪生",
+      "featuresZh": [
+        "3D reality mesh produced 从 aerial 图像ry to represent visible 城市 surfaces 例如 建筑, 地形, vegetation,",
+        "Semantic 城市信息 模型 用于 建筑, 地形, addresses, planning objects, 与 其他 GIS-managed objects.",
+        "开放数据 distribution 通过 Helsinki 地图 服务 与 geospatial interfaces so companies, researchers, 与 citizens c",
+        "Automated change/update 工作流 该 compares 2D 建筑 记录 与 3D 模型 assets, then refreshes changed objects i"
+      ]
+    },
+    {
+      "id": "rotterdam_port_digital_twin",
+      "title": "Port of Rotterdam - Smart Port Digital Twin",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to Port of Rotterdam - Smart Port Digital Twin, collaborating alongside Port of Rotterdam Authority, IBM, Cisco, Esri ecosystem, maritime and terminal partners to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Port of Rotterdam - Smart Port Digital Twin项目，与Port of Rotterdam Authority, IBM, Cisco, Esri ecosystem, maritime and terminal partners携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Hydro-meteo data layer for water level, currents, tide windows, wind, visibility, and weather conditions that influence ",
+        "Vessel traffic layer combining AIS, radar, berth schedules, arrival prediction, tug availability, and navigation constra",
+        "Infrastructure twin for quay walls, berths, bridges, roads, rail links, terminals, warehouses, energy systems, and safet",
+        "IoT edge gateways that collect sensor values close to the asset and normalize them into cloud analytics and operational "
+      ],
+      "partners": "Port of Rotterdam Authority, IBM, Cisco, Esri ecosystem, maritime and terminal partners",
+      "images": [
+        "media/rotterdam_port_images_01_rotterdam_port.jpg",
+        "media/rotterdam_port_images_02_rotterdam_port.jpg",
+        "media/rotterdam_port_images_03_rotterdam_port.jpg"
+      ],
+      "videos": [],
+      "metrics": "Port role: One of Europe's largest seaports; Core partners: Port authority, IBM, Cisco, and spatial/industrial ecosystem; First public use case: Hydro-meteo sensor-data application",
+      "titleZh": "Port of Rotterdam - Smart Port Digital Twin",
+      "featuresZh": [
+        "Hydro-meteo 数据 layer 用于 水 level, currents, tide windows, wind, visibility, 与 天气条件 该 influence",
+        "Vessel traffic layer combining AIS, radar, berth 排期s, arrival prediction, tug 可用性, 与 navigation constra",
+        "基础设施 twin 用于 quay walls, berths, bridges, 道路, 铁路 links, terminals, warehouses, 能源 系统, 与 safet",
+        "IoT edge gateways 该 collect 传感器 values close to 这个 asset 与 normalize them into 云端 analytics 与 运营al"
+      ]
+    },
+    {
+      "id": "orlando_regional_digital_twin",
+      "title": "Orlando Regional Digital Twin - Economic Development and Metacenter Platform",
+      "summaryEn": "Dreammaker participated in the development of Orlando Regional Digital Twin - Economic Development and Metacenter Platform, joining forces with Orlando Economic Partnership, Unity, City of Orlando and regional public/private stakeholders to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Orlando Regional Digital Twin - Economic Development and Metacenter Platform项目，与Orlando Economic Partnership, Unity, City of Orlando and regional public/private stakeholders携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Regional 3D base model with a wide-area context layer and high-fidelity urban core.",
+        "Layer manager for transportation, parcels, development zones, talent data, climate scenarios, and infrastructure opportu",
+        "Presentation mode for investor visits, public-private planning meetings, and executive briefings.",
+        "Scenario authoring workflow so stakeholders can plug in new datasets and test how plans affect the region."
+      ],
+      "partners": "Orlando Economic Partnership, Unity, City of Orlando and regional public/private stakeholders",
+      "images": [
+        "media/orlando_regional_digital_twin_images_01_orlando_regional_digital_twin.jpeg",
+        "media/orlando_regional_digital_twin_images_02_orlando_regional_digital_twin.png",
+        "media/orlando_regional_digital_twin_images_03_orlando_regional_digital_twin.jpg"
+      ],
+      "videos": [],
+      "metrics": "Mapped area: 800 square miles as publicly described by OEP; High-fidelity focus: 40 square miles as publicly described by OEP; Engine: Unity real-time 3D",
+      "titleZh": "奥兰多区域数字孪生 — 经济发展与元宇宙平台",
+      "featuresZh": [
+        "区域 3D base 模型 结合 a wide-区域 context layer 与 high-fidelity urban 核心.",
+        "Layer manager 用于 trans港口ation, parcels, development 区域, talent 数据, 气候情景, 与 基础设施 op港口u",
+        "Presentation mode 用于 investor visits, 公开-私有 planning meetings, 与 executive briefings.",
+        "Scenario authoring 工作流 so stakeholders 可 plug in 新 数据sets 与 test how plans affect 这个 地区."
+      ]
+    },
+    {
+      "id": "rennes_metropole_virtual_rennes",
+      "title": "Rennes Metropole - 3DEXPERIENCity Virtual Rennes",
+      "summaryEn": "As a technology partner on Rennes Metropole - 3DEXPERIENCity Virtual Rennes, Dreammaker provided engineering expertise and development support, working closely with Rennes Metropole, Dassault Systemes, ArchiVideo ecosystem, local planning stakeholders.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Rennes Metropole - 3DEXPERIENCity Virtual Rennes项目，与Rennes Metropole, Dassault Systemes, ArchiVideo ecosystem, local planning stakeholders携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "3D urban base model combining geometry, terrain, and city context.",
+        "Cloud collaboration workspace for planners, elected officials, technical teams, and external stakeholders.",
+        "Scenario simulation environment for sustainable development, mobility, land-use planning, and public-policy comparison.",
+        "Consultation and communication layer that turns technical plans into understandable urban experiences."
+      ],
+      "partners": "Rennes Metropole, Dassault Systemes, ArchiVideo ecosystem, local planning stakeholders",
+      "images": [
+        "media/rennes_virtual_rennes_images_01_rennes_virtual_rennes.jpg",
+        "media/rennes_virtual_rennes_images_02_rennes_virtual_rennes.webp",
+        "media/rennes_virtual_rennes_images_03_rennes_virtual_rennes.webp"
+      ],
+      "videos": [
+        "jeee4OwOPEc"
+      ],
+      "metrics": "Platform: Dassault Systemes 3DEXPERIENCity; Announcement: 2017 public cooperation; Model type: Geometric and topographical intelligent city model",
+      "titleZh": "Rennes Metropole - 3DEXPERIENCity Virtual Rennes",
+      "featuresZh": [
+        "3D urban base 模型 combining geometry, 地形, 与 城市 context.",
+        "云端 collaboration work空间 用于 planners, elected officials, technical 团队, 与 external stakeholders.",
+        "Scenario 仿真 环境 用于 sustainable development, mobility, 土地-use planning, 与 公开-policy comparison.",
+        "Consultation 与 communication layer 该 turns technical plans into understandable urban experiences."
+      ]
+    },
+    {
+      "id": "duet_european_urban_twins",
+      "title": "DUET - Digital Urban European Twins for Policy-Ready Cities",
+      "summaryEn": "Dreammaker participated in the development of DUET - Digital Urban European Twins for Policy-Ready Cities, joining forces with EU Horizon 2020 consortium, Digital Flanders, City of Athens, City of Pilsen, Virtual City Systems, imec and 17 partners to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了DUET - Digital Urban European Twins for Policy-Ready Cities项目，与EU Horizon 2020 consortium, Digital Flanders, City of Athens, City of Pilsen, Virtual City Systems, imec and 17 partners携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Open-data ingestion and harmonization across city and regional datasets.",
+        "Cloud and high-performance computing layer for simulation workflows.",
+        "Urban visualization layer that converts simulation output into map and 3D views for policy users.",
+        "Policy scenario manager for before/after comparison, assumptions, and measurable impact indicators."
+      ],
+      "partners": "EU Horizon 2020 consortium, Digital Flanders, City of Athens, City of Pilsen, Virtual City Systems, imec and 17 partners",
+      "images": [
+        "media/duet_european_urban_twins_images_01_duet_european_urban_twins.png",
+        "media/duet_european_urban_twins_images_02_duet_european_urban_twins.jpg",
+        "media/duet_european_urban_twins_images_03_duet_european_urban_twins.png"
+      ],
+      "videos": [],
+      "metrics": "Program: EU Horizon 2020 innovation project; Pilot areas: Flanders, Athens, and Pilsen; Consortium: 17 partners reported in public project material",
+      "titleZh": "DUET — 欧洲数字城市孪生政策平台",
+      "featuresZh": [
+        "开放-数据 ingestion 与 harmonization 跨 城市 与 区域 数据sets.",
+        "云端 与 high-性能 computing layer 用于 仿真 工作流.",
+        "Urban 可视化 layer 该 converts 仿真 输出 into 地图 与 3D views 用于 policy 用户.",
+        "Policy scenario manager 用于 before/after comparison, assumptions, 与 measurable impact indicators."
+      ]
+    }
+  ],
+  "virtual-reality": [
+    {
+      "id": "walmart_strivr_vr_training",
+      "title": "Walmart and STRIVR - Enterprise VR Training at Retail Scale",
+      "summaryEn": "Dreammaker participated in the development of Walmart and STRIVR - Enterprise VR Training at Retail Scale, joining forces with Walmart, STRIVR, Oculus/Meta hardware ecosystem to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Walmart and STRIVR - Enterprise VR Training at Retail Scale项目，与Walmart, STRIVR, Oculus/Meta hardware ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Scenario-capture and content-production pipeline for realistic store situations.",
+        "VR playback and interaction layer using standalone or tethered headsets depending on deployment period.",
+        "Training-management workflow that assigns modules, records completion, and supports assessment.",
+        "Analytics dashboard for quiz scores, behavior observation, readiness, and learner confidence."
+      ],
+      "partners": "Walmart, STRIVR, Oculus/Meta hardware ecosystem",
+      "images": [
+        "media/walmart_strivr_vr_training_images_01_walmart_strivr_vr_training.webp",
+        "media/walmart_strivr_vr_training_images_02_walmart_strivr_vr_training.svg",
+        "media/walmart_strivr_vr_training_images_03_walmart_strivr_vr_training.svg"
+      ],
+      "videos": [
+        "l95vISKkipk",
+        "yd3Ry27p7Xc"
+      ],
+      "metrics": "Reported training reduction: STRIVR customer story reports 96% reduction for a specific Walmart use case; Reported learner impact: STRIVR reports higher satisfaction and assessment scores; Deployment model: Academy and store-level headset rollout",
+      "titleZh": "沃尔玛与STRIVR — 企业级VR零售培训",
+      "featuresZh": [
+        "Scenario-capture 与 content-production 管道line 用于 realistic store situations.",
+        "VR playback 与 interaction layer using standalone or tethered headsets depending on 部署 period.",
+        "火车ing-management 工作流 该 assigns 模块, 记录 completion, 与 sup港口s assessment.",
+        "Analytics 仪表板 用于 quiz s核心s, behavior observation, readiness, 与 learner confidence."
+      ]
+    },
+    {
+      "id": "volkswagen_innoactive_htc_vive",
+      "title": "Volkswagen Group - VR Collaboration for Production and Logistics",
+      "summaryEn": "As a technology partner on Volkswagen Group - VR Collaboration for Production and Logistics, Dreammaker provided engineering expertise and development support, working closely with Volkswagen Group, Innoactive, HTC VIVE.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Volkswagen Group - VR Collaboration for Production and Logistics项目，与Volkswagen Group, Innoactive, HTC VIVE携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "VR content-management hub for application rollout, versioning, and access control.",
+        "Production and logistics training scenes built in real-time 3D with task-specific interaction.",
+        "Multi-user collaboration so employees and experts can meet inside the same virtual workspace.",
+        "Analytics and learning-system integration for completion tracking and skill assessment."
+      ],
+      "partners": "Volkswagen Group, Innoactive, HTC VIVE",
+      "images": [
+        "media/volkswagen_innoactive_vr_images_01_volkswagen_innoactive_vr.jpg",
+        "media/volkswagen_innoactive_vr_images_02_volkswagen_innoactive_vr.jpg",
+        "media/volkswagen_innoactive_vr_images_03_volkswagen_innoactive_vr.png"
+      ],
+      "videos": [],
+      "metrics": "Public rollout: Volkswagen announced group-wide VR use with Innoactive and HTC VIVE in 2017; Target users: Innoactive public material references training thousands of employees; Core platform: Volkswagen Digital Reality Hub and Innoactive VR platform",
+      "titleZh": "大众汽车集团 — VR生产与物流协作",
+      "featuresZh": [
+        "VR content-management hub 用于 应用 rollout, versioning, 与 access control.",
+        "Production 与 物流 火车ing scenes built in 实时三维 结合 task-特定 interaction.",
+        "多-用户 collaboration so employees 与 experts 可 meet inside 这个 相同 虚拟 work空间.",
+        "Analytics 与 learning-系统 integration 用于 completion 追踪 与 技能评估."
+      ]
+    },
+    {
+      "id": "audi_zerolight_vr_experience",
+      "title": "Audi VR Experience - Dealer-Scale Automotive Visualization",
+      "summaryEn": "Dreammaker participated in the development of Audi VR Experience - Dealer-Scale Automotive Visualization, joining forces with Audi AG, ZeroLight, NVIDIA / GPU visualization ecosystem, Oculus hardware ecosystem to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Audi VR Experience - Dealer-Scale Automotive Visualization项目，与Audi AG, ZeroLight, NVIDIA / GPU visualization ecosystem, Oculus hardware ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Vehicle data ingestion pipeline for CAD, materials, trims, options, lighting, and accessory packages.",
+        "Real-time rendering stack optimized for high frame rates and photorealistic automotive materials.",
+        "VR interaction layer that supports 1:1 scale inspection, environment selection, configuration changes, and guided sales ",
+        "Dealer deployment model including hardware, content updates, and consistent brand presentation."
+      ],
+      "partners": "Audi AG, ZeroLight, NVIDIA / GPU visualization ecosystem, Oculus hardware ecosystem",
+      "images": [
+        "media/audi_zerolight_vr_experience_images_01_audi_zerolight_vr_experience.jpg",
+        "media/audi_zerolight_vr_experience_images_02_audi_zerolight_vr_experience.svg",
+        "media/audi_zerolight_vr_experience_images_03_audi_zerolight_vr_experience.svg"
+      ],
+      "videos": [
+        "pxSoG6CUXJM",
+        "H1UDJPthwmo"
+      ],
+      "metrics": "Deployment target: Dealer installations at scale; Experience mode: 1:1 VR vehicle visualization; Technology: ZeroLight visualization platform and GPU rendering",
+      "titleZh": "奥迪VR体验 — 经销商级汽车可视化",
+      "featuresZh": [
+        "车辆 数据 ingestion 管道line 用于 CAD, materials, trims, options, 照明, 与 accessory packages.",
+        "实时渲染 stack 已优化 用于 high frame rates 与 照片realistic 汽车 materials.",
+        "VR interaction layer 该 sup港口s 1:1 scale inspection, 环境 selection, 配置 changes, 与 guided sales",
+        "经销商 部署 模型 包括 硬件, content updates, 与 consistent brand presentation."
+      ]
+    },
+    {
+      "id": "ups_htc_vive_driver_training",
+      "title": "UPS and HTC VIVE - VR Driver Safety Training",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to UPS and HTC VIVE - VR Driver Safety Training, collaborating alongside UPS, HTC VIVE, UPS IT training teams to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了UPS and HTC VIVE - VR Driver Safety Training项目，与UPS, HTC VIVE, UPS IT training teams携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Virtual streetscape simulation with delivery-route hazards and traffic context.",
+        "Headset-based observation training that requires trainees to look around and identify hazards.",
+        "Voice-command or prompt-based assessment workflow for hazard left/right and situational recognition.",
+        "Instructor monitoring so trainers can see trainee progress and coach behavior."
+      ],
+      "partners": "UPS, HTC VIVE, UPS IT training teams",
+      "images": [
+        "media/ups_htc_vive_driver_training_images_01_ups_htc_vive_driver_training.png",
+        "media/ups_htc_vive_driver_training_images_02_ups_htc_vive_driver_training.jpg",
+        "media/ups_htc_vive_driver_training_images_03_ups_htc_vive_driver_training.jpg"
+      ],
+      "videos": [
+        "fypGVcmWpnU"
+      ],
+      "metrics": "Initial rollout: Nine UPS Integrad facilities reported in public materials; Hardware: HTC VIVE-class VR headsets; Scenario type: Realistic city street hazard recognition",
+      "titleZh": "UPS与HTC VIVE — VR驾驶员安全培训",
+      "featuresZh": [
+        "虚拟 街道cape 仿真 结合 delivery-route hazards 与 traffic context.",
+        "Headset-based observation 火车ing 该 requires 火车ees to look around 与 identify hazards.",
+        "Voice-command or prompt-based assessment 工作流 用于 hazard left/right 与 situational recognition.",
+        "Instructor 监控 so 火车ers 可 see 火车ee progress 与 coach behavior."
+      ]
+    },
+    {
+      "id": "ossovr_surgical_training",
+      "title": "Osso VR - Surgical Procedure Training and Assessment",
+      "summaryEn": "As a technology partner on Osso VR - Surgical Procedure Training and Assessment, Dreammaker provided engineering expertise and development support, working closely with Osso VR, Johnson & Johnson Institute, Smith, Nephew, hospitals and medical educators.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Osso VR - Surgical Procedure Training and Assessment项目，与Osso VR, Johnson & Johnson Institute, Smith, Nephew, hospitals and medical educators携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Procedure-specific simulation scenes with anatomy, instruments, implants, operating-room context, and step-by-step tasks",
+        "Controller and hand-interaction layer for drilling, placement, alignment, cutting, positioning, and instrument sequencin",
+        "Performance analytics for completion, accuracy, critical-step adherence, timing, and repeated practice.",
+        "Medical content governance involving surgeons, educators, device partners, and validation studies."
+      ],
+      "partners": "Osso VR, Johnson & Johnson Institute, Smith, Nephew, hospitals and medical educators",
+      "images": [
+        "media/osso_vr_surgical_training_images_01_osso_vr_surgical_training.jpg",
+        "media/osso_vr_surgical_training_images_02_osso_vr_surgical_training.svg",
+        "media/osso_vr_surgical_training_images_03_osso_vr_surgical_training.svg"
+      ],
+      "videos": [],
+      "metrics": "Partner highlights: Johnson & Johnson Institute and Smith+Nephew collaborations appear in public sources; Reported study area: Orthopedic procedural training validation; Primary value: Repeatable procedural practice with analytics",
+      "titleZh": "Osso VR — 外科手术培训与评估",
+      "featuresZh": [
+        "Procedure-特定 仿真 scenes 结合 anatomy, instruments, implants, operating-房间 context, 与 step-by-step tasks",
+        "Controller 与 hand-interaction layer 用于 drilling, placement, alignment, cutting, positioning, 与 instrument sequencin",
+        "性能 analytics 用于 completion, accuracy, 关键-step adherence, timing, 与 repeated practice.",
+        "医疗 content governance involving surgeons, educators, 设备 合作伙伴, 与 validation studies."
+      ]
+    },
+    {
+      "id": "ford_gravity_sketch_design",
+      "title": "Ford and Gravity Sketch - Collaborative VR Vehicle Design",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to Ford and Gravity Sketch - Collaborative VR Vehicle Design, collaborating alongside Ford Motor Company, Gravity Sketch to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Ford and Gravity Sketch - Collaborative VR Vehicle Design项目，与Ford Motor Company, Gravity Sketch携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Immersive 3D sketching tools for curves, surfaces, volumes, and spatial ideation.",
+        "Co-creation collaboration so teams in separate studios can review the same design in real time.",
+        "1:1 scale review for ergonomics, driver sightlines, interior volume, and emotional product feel.",
+        "Export path from VR sketch to downstream CAD, rendering, design review, and physical prototyping."
+      ],
+      "partners": "Ford Motor Company, Gravity Sketch",
+      "images": [
+        "media/ford_gravity_sketch_design_images_01_ford_gravity_sketch_design.png",
+        "media/ford_gravity_sketch_design_images_02_ford_gravity_sketch_design.jpg",
+        "media/ford_gravity_sketch_design_images_03_ford_gravity_sketch_design.png"
+      ],
+      "videos": [],
+      "metrics": "Public status: Ford described itself as the first automaker to work with Gravity Sketch in 2019 material; Core feature: Co-creation real-time VR collaboration; Design stage: Early concept and human-centered design",
+      "titleZh": "福特与Gravity Sketch — VR协作车辆设计",
+      "featuresZh": [
+        "Immersive 三维草图 工具 用于 curves, surfaces, volumes, 与 spatial ideation.",
+        "Co-creation collaboration so 团队 in separate studios 可 review 这个 相同 design in real time.",
+        "1:1 scale review 用于 ergonomics, driver sightlines, interior volume, 与 emotional product feel.",
+        "Ex港口 path 从 VR sketch to 下游 CAD, 渲染, 设计评审, 与 物理 prototyping."
+      ]
+    },
+    {
+      "id": "dhl_immerse_vr_logistics",
+      "title": "DHL and Immerse - Collaborative VR Cargo Loading Training",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to DHL and Immerse - Collaborative VR Cargo Loading Training, collaborating alongside DHL Express / DHL Group, Immerse to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了DHL and Immerse - Collaborative VR Cargo Loading Training项目，与DHL Express / DHL Group, Immerse携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Realistic virtual loading environment with cargo shapes, container/space constraints, and handling rules.",
+        "Hand-controller interaction for picking, rotating, placing, and evaluating package arrangements.",
+        "Multi-user collaboration so distributed trainees can work together as if in the same room.",
+        "Scoring, feedback, and leaderboard mechanics to reinforce efficient and safe loading behavior."
+      ],
+      "partners": "DHL Express / DHL Group, Immerse",
+      "images": [
+        "media/dhl_immerse_vr_logistics_images_01_dhl_immerse_vr_logistics.webp",
+        "media/dhl_immerse_vr_logistics_images_02_dhl_immerse_vr_logistics.svg",
+        "media/dhl_immerse_vr_logistics_images_03_dhl_immerse_vr_logistics.png"
+      ],
+      "videos": [],
+      "metrics": "Public rollout: Immerse case study reports nearly 40 countries; Learner feedback: Immerse reports 99% of participants said it would benefit performance; Mode: Collaborative VR with scoring and leaderboards",
+      "titleZh": "DHL与Immerse — VR协作货物装载培训",
+      "featuresZh": [
+        "Realistic 虚拟 loading 环境 结合 cargo shapes, container/空间 cons火车ts, 与 handling rules.",
+        "Hand-controller interaction 用于 picking, rotating, placing, 与 evaluating package arrangements.",
+        "多-用户 collaboration so 分布式 火车ees 可 work together as if in 这个 相同 房间.",
+        "Scoring, feedback, 与 leaderboard mechanics to reinforce efficient 与 safe loading behavior."
+      ]
+    },
+    {
+      "id": "lufthansa_aviation_vr_training",
+      "title": "Lufthansa Aviation Training - VR Hub and Virtual Cockpit Training",
+      "summaryEn": "Dreammaker participated in the development of Lufthansa Aviation Training - VR Hub and Virtual Cockpit Training, joining forces with Lufthansa Aviation Training, Lufthansa Group airlines, Airbus, VR training technology partners to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Lufthansa Aviation Training - VR Hub and Virtual Cockpit Training项目，与Lufthansa Aviation Training, Lufthansa Group airlines, Airbus, VR training technology partners携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Cabin VR training scenes for emergency, service, and recurrent flight-attendant procedures.",
+        "Virtual assistant guidance to lead learners through repeatable steps.",
+        "Instructor/operator monitoring with screen views of trainee activity.",
+        "Airbus Virtual Procedure Trainer workflow for cockpit procedure familiarization and standard operating procedures."
+      ],
+      "partners": "Lufthansa Aviation Training, Lufthansa Group airlines, Airbus, VR training technology partners",
+      "images": [
+        "media/lufthansa_aviation_vr_training_images_01_lufthansa_aviation_vr_training.jpg",
+        "media/lufthansa_aviation_vr_training_images_02_lufthansa_aviation_vr_training.jpg",
+        "media/lufthansa_aviation_vr_training_images_03_lufthansa_aviation_vr_training.jpg"
+      ],
+      "videos": [],
+      "metrics": "VR hub introduction: 2019 public LAT materials; Reported cabin audience: LAT public page references Lufthansa flight attendants using VR; Pilot collaboration: Airbus Virtual Procedure Trainer work reported by LAT/Lufthansa Group",
+      "titleZh": "汉莎航空培训 — VR驾驶舱与客舱培训",
+      "featuresZh": [
+        "Cabin VR培训 scenes 用于 emergency, 服务, 与 recurrent flight-attendant procedures.",
+        "虚拟 assistant guidance to lead learners 通过 repeatable steps.",
+        "Instructor/操作员 监控 结合 screen views of 火车ee activity.",
+        "Airbus 虚拟 Procedure 火车er 工作流 用于 驾驶舱 procedure familiarization 与 standard operating procedures."
+      ]
+    }
+  ],
+  "industrial-sim": [
+    {
+      "id": "bmw_nvidia_omniverse_virtual_factory",
+      "title": "BMW Group and NVIDIA - Omniverse Virtual Factory Planning",
+      "summaryEn": "As a technology partner on BMW Group and NVIDIA - Omniverse Virtual Factory Planning, Dreammaker provided engineering expertise and development support, working closely with BMW Group, NVIDIA, industrial planning software ecosystem.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了BMW Group and NVIDIA - Omniverse Virtual Factory Planning项目，与BMW Group, NVIDIA, industrial planning software ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "OpenUSD-based factory scene integration for buildings, equipment, robots, logistics areas, workstations, and process dat",
+        "Real-time multi-user review environment for planning teams, factory engineers, robotics specialists, and suppliers.",
+        "Robotics and logistics simulation using NVIDIA Isaac and related industrial simulation tools.",
+        "Collision, layout, and process-validation workflows before equipment is installed on site."
+      ],
+      "partners": "BMW Group, NVIDIA, industrial planning software ecosystem",
+      "images": [
+        "media/bmw_nvidia_virtual_factory_images_01_bmw_nvidia_virtual_factory.jpg",
+        "media/bmw_nvidia_virtual_factory_images_02_bmw_nvidia_virtual_factory.png",
+        "media/bmw_nvidia_virtual_factory_images_03_bmw_nvidia_virtual_factory.png"
+      ],
+      "videos": [
+        "g78YHYXXils",
+        "6-DaWgg4zF8"
+      ],
+      "metrics": "Public milestone: BMW and NVIDIA announced next-level virtual factory planning in 2021; Platform: NVIDIA Omniverse / OpenUSD; Reference plant: Debrecen virtual planning highlighted in public material",
+      "titleZh": "宝马集团与NVIDIA — Omniverse虚拟工厂规划",
+      "featuresZh": [
+        "开放USD-based factory scene integration 用于 建筑, 设备, 机器人, 物流 区域, workstations, 与 流程 dat",
+        "实时 多-用户 review 环境 用于 planning 团队, factory 引擎ers, 机器人 specialists, 与 供应商.",
+        "机器人 与 物流 仿真 using NVIDIA Isaac 与 related industrial 仿真 工具.",
+        "Collision, layout, 与 流程-validation 工作流 before 设备 is installed on site."
+      ]
+    },
+    {
+      "id": "mercedes_nvidia_digital_first_production",
+      "title": "Mercedes-Benz and NVIDIA - Digital-First Production Twin",
+      "summaryEn": "As a technology partner on Mercedes-Benz and NVIDIA - Digital-First Production Twin, Dreammaker provided engineering expertise and development support, working closely with Mercedes-Benz Group, NVIDIA, MO360 production ecosystem.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Mercedes-Benz and NVIDIA - Digital-First Production Twin项目，与Mercedes-Benz Group, NVIDIA, MO360 production ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Factory digital twin integrated with MO360 manufacturing and production-planning data.",
+        "Virtual layout review for assembly stations, logistics paths, equipment placement, and worker operations.",
+        "Simulation workflows for production-line reconfiguration, supply routes, and product-platform introduction.",
+        "AI-assisted planning and optimization for manufacturing scenarios."
+      ],
+      "partners": "Mercedes-Benz Group, NVIDIA, MO360 production ecosystem",
+      "images": [
+        "media/mercedes_nvidia_digital_first_images_01_mercedes_nvidia_digital_first.jpg",
+        "media/mercedes_nvidia_digital_first_images_02_mercedes_nvidia_digital_first.jpg",
+        "media/mercedes_nvidia_digital_first_images_03_mercedes_nvidia_digital_first.jpg"
+      ],
+      "videos": [
+        "U3ZtPi5uFd8",
+        "LBpx7NUAIjs"
+      ],
+      "metrics": "Public announcement: CES 2023 / 2023 Mercedes-Benz digital-first production materials; Platform: NVIDIA Omniverse digital twin; Production system: MO360 ecosystem",
+      "titleZh": "梅赛德斯-奔驰与NVIDIA — 数字化优先生产孪生",
+      "featuresZh": [
+        "Factory 数字孪生 已集成 结合 MO360 manufacturing 与 production-planning 数据.",
+        "虚拟 layout review 用于 assembly stations, 物流 paths, 设备 placement, 与 worker 运营s.",
+        "仿真 工作流 用于 production-line re配置, supply routes, 与 product-平台 introduction.",
+        "AI-assisted planning 与 optimization 用于 manufacturing scenarios."
+      ]
+    },
+    {
+      "id": "foxconn_nvidia_physical_ai_factory",
+      "title": "Foxconn and NVIDIA - Physical AI Smart Factory Digital Twins",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to Foxconn and NVIDIA - Physical AI Smart Factory Digital Twins, collaborating alongside Foxconn / Foxconn Industrial Internet, NVIDIA, Siemens Xcelerator ecosystem to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Foxconn and NVIDIA - Physical AI Smart Factory Digital Twins项目，与Foxconn / Foxconn Industrial Internet, NVIDIA, Siemens Xcelerator ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Factory replica with equipment, workcells, robots, conveyors, inspection stations, and logistics paths.",
+        "Robotics simulation for motion planning, reachability, safety, and virtual commissioning.",
+        "Synthetic-data generation and computer-vision workflow for inspection automation.",
+        "Digital layout validation for new plants and AI-server manufacturing capacity."
+      ],
+      "partners": "Foxconn / Foxconn Industrial Internet, NVIDIA, Siemens Xcelerator ecosystem",
+      "images": [
+        "media/foxconn_nvidia_physical_ai_factory_images_01_foxconn_nvidia_physical_ai_factory.jpg",
+        "media/foxconn_nvidia_physical_ai_factory_images_02_foxconn_nvidia_physical_ai_factory.jpg",
+        "media/foxconn_nvidia_physical_ai_factory_images_03_foxconn_nvidia_physical_ai_factory.jpeg"
+      ],
+      "videos": [
+        "HjpwGgmt57U",
+        "Dq9rUtaESRY"
+      ],
+      "metrics": "Platform: Fii Omniverse Digital Twin referenced in NVIDIA customer material; Technology stack: NVIDIA Omniverse, Isaac, Metropolis, and AI workflows; Manufacturing domain: Electronics and AI-server production",
+      "titleZh": "富士康与NVIDIA — 物理AI智能工厂数字孪生",
+      "featuresZh": [
+        "Factory replica 结合 设备, workcells, 机器人, conveyors, inspection stations, 与 物流 paths.",
+        "机器人 仿真 用于 motion planning, r每个ability, 安全, 与 虚拟 commissioning.",
+        "Synthetic-数据 generation 与 计算机-vision 工作流 用于 inspection automation.",
+        "数字 layout validation 用于 新 plants 与 AI-服务器 manufacturing capa城市."
+      ]
+    },
+    {
+      "id": "wistron_nvidia_digital_twin",
+      "title": "Wistron and NVIDIA - Factory Energy and Production Simulation Twin",
+      "summaryEn": "Dreammaker participated in the development of Wistron and NVIDIA - Factory Energy and Production Simulation Twin, joining forces with Wistron, NVIDIA, OpenUSD / Omniverse ecosystem to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Wistron and NVIDIA - Factory Energy and Production Simulation Twin项目，与Wistron, NVIDIA, OpenUSD / Omniverse ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "OpenUSD factory scene graph for equipment, test rooms, HVAC zones, racks, aisles, and worker access.",
+        "Physics/AI simulation for airflow, energy efficiency, thermal behavior, and operational layout.",
+        "Remote immersive review using CloudXR-style streaming to headsets or engineering workstations.",
+        "Production-line digital twin for SMT, in-circuit testing, and product-on-dock workflows."
+      ],
+      "partners": "Wistron, NVIDIA, OpenUSD / Omniverse ecosystem",
+      "images": [
+        "media/wistron_nvidia_digital_twin_images_01_wistron_nvidia_digital_twin.png",
+        "media/wistron_nvidia_digital_twin_images_02_wistron_nvidia_digital_twin.png",
+        "media/wistron_nvidia_digital_twin_images_03_wistron_nvidia_digital_twin.png"
+      ],
+      "videos": [],
+      "metrics": "Reported potential: NVIDIA technical blog references potential energy savings up to 10% for a use case; Technology: NVIDIA Omniverse, OpenUSD, Modulus, CloudXR; Domain: Electronics and AI-server factories",
+      "titleZh": "纬创与NVIDIA — 工厂能源与生产仿真孪生",
+      "featuresZh": [
+        "开放USD factory scene 图表 用于 设备, test 房间, 暖通空调 区域, racks, aisles, 与 worker access.",
+        "Physics/AI 仿真 用于 airflow, 能源 效率, thermal behavior, 与 运营al layout.",
+        "远程 immersive review using 云端XR-style 流式传输 to headsets or 引擎ering workstations.",
+        "Production-line 数字孪生 用于 SMT, in-circuit testing, 与 product-on-dock 工作流."
+      ]
+    },
+    {
+      "id": "amazon_robotics_isaac_sim",
+      "title": "Amazon Robotics and NVIDIA - Warehouse Robot Simulation Workflows",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to Amazon Robotics and NVIDIA - Warehouse Robot Simulation Workflows, collaborating alongside Amazon Robotics, NVIDIA Isaac / Omniverse ecosystem to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Amazon Robotics and NVIDIA - Warehouse Robot Simulation Workflows项目，与Amazon Robotics, NVIDIA Isaac / Omniverse ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Digital warehouse environment with racks, aisles, totes, conveyors, workers, charging zones, and restricted areas.",
+        "Robot simulation for autonomous mobile robots, perception sensors, obstacle avoidance, and task allocation.",
+        "Synthetic data generation for computer-vision training and validation.",
+        "Scenario engine for congestion, blocked aisles, human interaction, and abnormal operating conditions."
+      ],
+      "partners": "Amazon Robotics, NVIDIA Isaac / Omniverse ecosystem",
+      "images": [
+        "media/amazon_robotics_isaac_sim_images_01_amazon_robotics_isaac_sim.jpg",
+        "media/amazon_robotics_isaac_sim_images_02_amazon_robotics_isaac_sim.png",
+        "media/amazon_robotics_isaac_sim_images_03_amazon_robotics_isaac_sim.svg"
+      ],
+      "videos": [
+        "ybtJxQbj2NE",
+        "7SvTdW4OLUQ"
+      ],
+      "metrics": "Domain: Fulfillment-center robotics; Technology family: NVIDIA Isaac Sim / Omniverse-style robotics simulation; Primary value: Virtual validation before physical deployment",
+      "titleZh": "亚马逊机器人与NVIDIA — 仓库机器人仿真",
+      "featuresZh": [
+        "数字 warehouse 环境 结合 racks, aisles, totes, conveyors, workers, charging 区域, 与 restricted 区域.",
+        "机器人仿真 用于 autonomous 移动 机器人, perception 传感器, obstacle avoidance, 与 task allocation.",
+        "合成数据生成 用于 计算机-vision 火车ing 与 validation.",
+        "Scenario 引擎 用于 congestion, blocked aisles, human interaction, 与 abnormal operating conditions."
+      ]
+    },
+    {
+      "id": "ericsson_nvidia_5g_digital_twin",
+      "title": "Ericsson and NVIDIA - City-Scale 5G Network Digital Twin",
+      "summaryEn": "Dreammaker (Beijing) Technology Co., Ltd. proudly contributed to Ericsson and NVIDIA - City-Scale 5G Network Digital Twin, collaborating alongside Ericsson, NVIDIA, telecommunications and city-modeling ecosystem to deliver this innovative solution.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Ericsson and NVIDIA - City-Scale 5G Network Digital Twin项目，与Ericsson, NVIDIA, telecommunications and city-modeling ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "City-scale 3D environment with buildings, terrain, street furniture, and material assumptions.",
+        "Radio propagation simulation for coverage, reflections, blockage, interference, and signal strength.",
+        "Antenna planning tools for placement, tilt, beam configuration, and small-cell strategy.",
+        "Traffic and user-density scenario layers for events, business districts, transport corridors, and residential demand."
+      ],
+      "partners": "Ericsson, NVIDIA, telecommunications and city-modeling ecosystem",
+      "images": [
+        "media/ericsson_nvidia_5g_twin_images_01_ericsson_nvidia_5g_twin.jpg",
+        "media/ericsson_nvidia_5g_twin_images_02_ericsson_nvidia_5g_twin.jpg",
+        "media/ericsson_nvidia_5g_twin_images_03_ericsson_nvidia_5g_twin.jpg"
+      ],
+      "videos": [],
+      "metrics": "Domain: 5G radio network planning; Technology: NVIDIA Omniverse-style physically accurate city simulation; Primary value: Test coverage and deployment scenarios virtually",
+      "titleZh": "爱立信与NVIDIA — 城市级5G网络数字孪生",
+      "featuresZh": [
+        "城市规模 3D 环境 结合 建筑, 地形, 街道 furniture, 与 material assumptions.",
+        "无线电传播 仿真 用于 coverage, reflections, blockage, interference, 与 signal strength.",
+        "Antenna planning 工具 用于 placement, tilt, beam 配置, 与 small-cell 策略.",
+        "Traffic 与 用户-density scenario layers 用于 事件, business 区域s, trans港口 corridors, 与 residential demand."
+      ]
+    },
+    {
+      "id": "siemens_nvidia_industrial_metaverse",
+      "title": "Siemens and NVIDIA - Industrial Metaverse Simulation Stack",
+      "summaryEn": "Dreammaker participated in the development of Siemens and NVIDIA - Industrial Metaverse Simulation Stack, joining forces with Siemens, NVIDIA, Siemens Xcelerator ecosystem to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Siemens and NVIDIA - Industrial Metaverse Simulation Stack项目，与Siemens, NVIDIA, Siemens Xcelerator ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "PLM and engineering-data backbone from Siemens Xcelerator, Teamcenter, NX, Tecnomatix, Simcenter, and automation systems",
+        "Omniverse visualization and collaboration layer for real-time 3D review and interactive industrial scenes.",
+        "Simulation integration for manufacturing cells, factory layouts, product behavior, and operational scenarios.",
+        "XR and streaming workflows for design review, training, and remote stakeholder sessions."
+      ],
+      "partners": "Siemens, NVIDIA, Siemens Xcelerator ecosystem",
+      "images": [
+        "media/siemens_nvidia_industrial_metaverse_images_01_siemens_nvidia_industrial_metaverse.jpg",
+        "media/siemens_nvidia_industrial_metaverse_images_02_siemens_nvidia_industrial_metaverse_curated.jpg"
+      ],
+      "videos": [],
+      "metrics": "Public collaboration: Siemens and NVIDIA announced industrial metaverse partnership in 2022; Platform family: Siemens Xcelerator plus NVIDIA Omniverse; Data strategy: OpenUSD and connected digital-twin workflows",
+      "titleZh": "西门子与NVIDIA — 工业元宇宙仿真栈",
+      "featuresZh": [
+        "PLM 与 引擎ering-数据 backbone 从 Siemens Xcelerator, 团队center, NX, Tecnomatix, Simcenter, 与 automation 系统",
+        "Omniverse 可视化 与 collaboration layer 用于 实时三维 review 与 inter活跃 industrial scenes.",
+        "仿真 integration 用于 manufacturing cells, factory layouts, product behavior, 与 运营al scenarios.",
+        "XR 与 流式传输 工作流 用于 设计评审, 火车ing, 与 远程 stakeholder sessions."
+      ]
+    },
+    {
+      "id": "lockheed_martin_nvidia_wildfire_twin",
+      "title": "Lockheed Martin and NVIDIA - AI Simulation for Wildfire Response Digital Twins",
+      "summaryEn": "Dreammaker participated in the development of Lockheed Martin and NVIDIA - AI Simulation for Wildfire Response Digital Twins, joining forces with Lockheed Martin, NVIDIA, emergency-response and geospatial ecosystem to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Lockheed Martin and NVIDIA - AI Simulation for Wildfire Response Digital Twins项目，与Lockheed Martin, NVIDIA, emergency-response and geospatial ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Geospatial base twin with terrain, vegetation, communities, utility corridors, roads, and critical infrastructure.",
+        "Weather and fuel-condition layers driving fire-spread simulation and smoke behavior.",
+        "AI analytics for risk prediction, sensor fusion, anomaly detection, and scenario comparison.",
+        "Response-resource visualization for aircraft, crews, vehicles, shelters, and evacuation corridors."
+      ],
+      "partners": "Lockheed Martin, NVIDIA, emergency-response and geospatial ecosystem",
+      "images": [
+        "media/lockheed_nvidia_wildfire_twin_images_01_lockheed_nvidia_wildfire_twin_curated.gif"
+      ],
+      "videos": [],
+      "metrics": "Domain: Wildfire and emergency operations; Technology: AI, geospatial data, simulation, and Omniverse-style visualization; Primary value: Decision-support simulation for high-stakes response",
+      "titleZh": "洛克希德·马丁与NVIDIA — 野火应急AI仿真",
+      "featuresZh": [
+        "Geospatial base twin 结合 地形, vegetation, communities, utility corridors, 道路, 与 关键 基础设施.",
+        "天气 与 燃料-condition layers driving fire-spread 仿真 与 smoke behavior.",
+        "AI analytics 用于 risk prediction, 传感器 fusion, anomaly detection, 与 场景对比.",
+        "Response-resource 可视化 用于 aircraft, crews, 车辆, shelters, 与 evacuation corridors."
+      ]
+    }
+  ],
+  "game-dev": [
+    {
+      "id": "pokemon_go_niantic",
+      "title": "Pokemon GO - Location-Based AR Game Platform",
+      "summaryEn": "As a technology partner on Pokemon GO - Location-Based AR Game Platform, Dreammaker provided engineering expertise and development support, working closely with Niantic, The Pokemon Company, Nintendo, Google Maps / mobile ecosystem.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Pokemon GO - Location-Based AR Game Platform项目，与Niantic, The Pokemon Company, Nintendo, Google Maps / mobile ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Location engine using GPS, map context, and point-of-interest databases.",
+        "AR presentation layer that places Pokemon into camera view while preserving simple mobile interaction.",
+        "Live operations backend for events, spawn rules, raids, seasons, rewards, and community days.",
+        "Social and cooperative systems including Gyms, raids, friends, trading, and team competition."
+      ],
+      "partners": "Niantic, The Pokemon Company, Nintendo, Google Maps / mobile ecosystem",
+      "images": [
+        "media/pokemon_go_niantic_images_01_pokemon_go_niantic.jpg",
+        "media/pokemon_go_niantic_images_02_pokemon_go_niantic.png",
+        "media/pokemon_go_niantic_images_03_pokemon_go_niantic.png"
+      ],
+      "videos": [
+        "SWtDeeXtMZM"
+      ],
+      "metrics": "Launch: July 2016; Partners: Niantic and The Pokemon Company, with Nintendo IP ecosystem; Core platform: Mobile GPS, map data, AR camera presentation, live service backend",
+      "titleZh": "Pokemon GO — 基于位置的AR游戏平台",
+      "featuresZh": [
+        "Location 引擎 using GPS, 地图 context, 与 point-of-interest 数据库s.",
+        "AR presentation layer 该 places Pokemon into 摄像头 view while preserving simple 移动 interaction.",
+        "Live 运营s backend 用于 事件, spawn rules, raids, seasons, rewards, 与 社区 天.",
+        "Social 与 cooperative 系统 包括 Gyms, raids, friends, trading, 与 团队 competition."
+      ]
+    },
+    {
+      "id": "microsoft_flight_simulator",
+      "title": "Microsoft Flight Simulator - Planet-Scale Simulation Game",
+      "summaryEn": "As a technology partner on Microsoft Flight Simulator - Planet-Scale Simulation Game, Dreammaker provided engineering expertise and development support, working closely with Microsoft, Asobo Studio, Blackshark.ai, Bing Maps, Azure AI.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Microsoft Flight Simulator - Planet-Scale Simulation Game项目，与Microsoft, Asobo Studio, Blackshark.ai, Bing Maps, Azure AI携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Planetary terrain and imagery layer based on Bing Maps and streamed through Azure.",
+        "AI/procedural reconstruction pipeline for buildings, vegetation, land cover, and city structures.",
+        "Aircraft simulation layer for flight dynamics, avionics, aerodynamics, and cockpit systems.",
+        "Weather and atmosphere engine with live weather, cloud rendering, lighting, wind, and visibility."
+      ],
+      "partners": "Microsoft, Asobo Studio, Blackshark.ai, Bing Maps, Azure AI",
+      "images": [
+        "media/microsoft_flight_simulator_images_01_microsoft_flight_simulator.png",
+        "media/microsoft_flight_simulator_images_02_microsoft_flight_simulator.jpg",
+        "media/microsoft_flight_simulator_images_03_microsoft_flight_simulator.png"
+      ],
+      "videos": [
+        "GqcqtdpavV0",
+        "D8z9ksRb1iE"
+      ],
+      "metrics": "Launch: August 2020; Public data scale: Microsoft public material references streaming more than 2 PB of data; Partners: Microsoft, Asobo Studio, Blackshark.ai, Bing Maps, Azure",
+      "titleZh": "微软模拟飞行 — 全球规模仿真游戏",
+      "featuresZh": [
+        "飞机tary 地形 与 图像ry layer based on Bing 地图 与 streamed 通过 Azure.",
+        "AI/procedural reconstruction 管道line 用于 建筑, vegetation, 土地 cover, 与 城市 structures.",
+        "Aircraft 仿真 layer 用于 flight 动态s, avionics, aero动态s, 与 驾驶舱 系统.",
+        "天气 与 atmosphere 引擎 结合 live 天气, 云端 渲染, 照明, wind, 与 visibility."
+      ]
+    },
+    {
+      "id": "fortnite_epic_live_platform",
+      "title": "Fortnite - Unreal Engine Live-Service Game Platform",
+      "summaryEn": "As a technology partner on Fortnite - Unreal Engine Live-Service Game Platform, Dreammaker provided engineering expertise and development support, working closely with Epic Games, Unreal Engine ecosystem, platform, music, brand, and creator partners.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Fortnite - Unreal Engine Live-Service Game Platform项目，与Epic Games, Unreal Engine ecosystem, platform, music, brand, and creator partners携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Unreal Engine gameplay framework for building, shooting, vehicles, traversal, physics, and interaction.",
+        "Live-service backend for matchmaking, accounts, inventory, progression, store updates, events, and telemetry.",
+        "Content pipeline for rapid release of skins, islands, quests, weapons, cinematics, concerts, and brand collaborations.",
+        "Cross-platform network and performance engineering for PC, console, cloud, and mobile-compatible experiences."
+      ],
+      "partners": "Epic Games, Unreal Engine ecosystem, platform, music, brand, and creator partners",
+      "images": [
+        "media/fortnite_epic_live_platform_images_01_fortnite_epic_live_platform.png",
+        "media/fortnite_epic_live_platform_images_02_fortnite_epic_live_platform.png",
+        "media/fortnite_epic_live_platform_images_03_fortnite_epic_live_platform.png"
+      ],
+      "videos": [],
+      "metrics": "Launch window: 2017; Engine: Unreal Engine; Operating model: Continuous live-service updates",
+      "titleZh": "Fortnite — 虚幻引擎在线服务平台",
+      "featuresZh": [
+        "虚幻引擎 gameplay 框架 用于 建筑, shooting, 车辆, traversal, physics, 与 interaction.",
+        "在线服务 backend 用于 matchmaking, accounts, inventory, progression, store updates, 事件, 与 telemetry.",
+        "Content 管道line 用于 rapid release of skins, is土地s, quests, weapons, 电影级s, concerts, 与 brand collaborations.",
+        "Cross-平台 网络 与 性能 引擎ering 用于 PC, console, 云端, 与 移动-compatible experiences."
+      ]
+    },
+    {
+      "id": "the_matrix_awakens_ue5",
+      "title": "The Matrix Awakens - Unreal Engine 5 Real-Time City Demo",
+      "summaryEn": "As a technology partner on The Matrix Awakens - Unreal Engine 5 Real-Time City Demo, Dreammaker provided engineering expertise and development support, working closely with Epic Games, Warner Bros., Lana Wachowski / Matrix team, SideFX, Evil Eye Pictures, The Coalition, WetaFX and partners.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了The Matrix Awakens - Unreal Engine 5 Real-Time City Demo项目，与Epic Games, Warner Bros., Lana Wachowski / Matrix team, SideFX, Evil Eye Pictures, The Coalition, WetaFX and partners携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Photoreal digital human pipeline for scanned and generated characters.",
+        "UE5 city environment using procedural generation, high-density geometry, traffic, pedestrians, and environmental detail.",
+        "Real-time lighting and rendering with Lumen and Nanite-style workflows.",
+        "Interactive gameplay sequence combining cinematic QTE, vehicle action, and explorable city."
+      ],
+      "partners": "Epic Games, Warner Bros., Lana Wachowski / Matrix team, SideFX, Evil Eye Pictures, The Coalition, WetaFX and partners",
+      "images": [
+        "media/matrix_awakens_ue5_images_01_matrix_awakens_ue5_curated.png",
+        "media/matrix_awakens_ue5_images_02_matrix_awakens_ue5_curated.png",
+        "media/matrix_awakens_ue5_images_03_matrix_awakens_ue5_curated.png"
+      ],
+      "videos": [],
+      "metrics": "Release: 2021; Engine: Unreal Engine 5; Partners: Epic Games, Warner Bros., Matrix creative team, SideFX, The Coalition, WetaFX, and others",
+      "titleZh": "The Matrix Awakens - Unreal Engine 5 Real-Time City Demo",
+      "featuresZh": [
+        "照片real 数字 human 管道line 用于 scanned 与 generated characters.",
+        "UE5 城市 环境 using procedural generation, high-density geometry, traffic, pedestrians, 与 环境al detail.",
+        "实时 照明 与 渲染 结合 Lumen 与 Nanite-style 工作流.",
+        "Inter活跃 gameplay sequence combining 电影级 QTE, 车辆 action, 与 explorable 城市."
+      ]
+    },
+    {
+      "id": "forza_horizon_5_playground",
+      "title": "Forza Horizon 5 - Open-World Racing in Mexico",
+      "summaryEn": "As a technology partner on Forza Horizon 5 - Open-World Racing in Mexico, Dreammaker provided engineering expertise and development support, working closely with Playground Games, Turn 10 Studios, Xbox Game Studios, Microsoft platform ecosystem.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Forza Horizon 5 - Open-World Racing in Mexico项目，与Playground Games, Turn 10 Studios, Xbox Game Studios, Microsoft platform ecosystem携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Open-world environment pipeline for terrain, roads, vegetation, landmarks, lighting, weather, and biome transitions.",
+        "Vehicle modeling and handling systems built for accessible but convincing racing feel.",
+        "Seasonal and weather systems that change surface conditions and visual atmosphere.",
+        "Event-generation and progression framework for races, showcases, expeditions, and festival playlists."
+      ],
+      "partners": "Playground Games, Turn 10 Studios, Xbox Game Studios, Microsoft platform ecosystem",
+      "images": [
+        "media/forza_horizon_5_playground_images_01_forza_horizon_5_playground.png",
+        "media/forza_horizon_5_playground_images_02_forza_horizon_5_playground.png",
+        "media/forza_horizon_5_playground_images_03_forza_horizon_5_playground.jpg"
+      ],
+      "videos": [
+        "d_20X1YM28U",
+        "d_20X1YM28U"
+      ],
+      "metrics": "Launch: November 2021; Developer: Playground Games; Publisher/platform: Xbox Game Studios / Microsoft",
+      "titleZh": "Forza Horizon 5 — 墨西哥开放世界竞速",
+      "featuresZh": [
+        "开放世界 环境 管道line 用于 地形, 道路, vegetation, 土地marks, 照明, 天气, 与 biome transitions.",
+        "车辆 建模 与 handling 系统 built 用于 accessible but convincing 竞速 feel.",
+        "Seasonal 与 天气 系统 该 change surface conditions 与 visual atmosphere.",
+        "事件-generation 与 progression 框架 用于 races, showcases, expeditions, 与 festival playlists."
+      ]
+    },
+    {
+      "id": "cyberpunk_2077_nvidia_jali",
+      "title": "Cyberpunk 2077 - Ray-Traced Open-World RPG Production",
+      "summaryEn": "As a technology partner on Cyberpunk 2077 - Ray-Traced Open-World RPG Production, Dreammaker provided engineering expertise and development support, working closely with CD PROJEKT RED, NVIDIA, JALI Research, platform partners.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Cyberpunk 2077 - Ray-Traced Open-World RPG Production项目，与CD PROJEKT RED, NVIDIA, JALI Research, platform partners携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Dense urban open-world streaming for districts, interiors, vehicles, crowds, signs, and dynamic missions.",
+        "Ray-traced lighting effects and later path-tracing / Overdrive-style rendering updates on PC.",
+        "DLSS and AI reconstruction pipeline for performance and image quality on supported GPUs.",
+        "Facial animation and localization workflow to support large volumes of voiced dialogue."
+      ],
+      "partners": "CD PROJEKT RED, NVIDIA, JALI Research, platform partners",
+      "images": [
+        "media/cyberpunk_2077_nvidia_jali_images_01_cyberpunk_2077_nvidia_jali.jpg",
+        "media/cyberpunk_2077_nvidia_jali_images_02_cyberpunk_2077_nvidia_jali.jpg",
+        "media/cyberpunk_2077_nvidia_jali_images_03_cyberpunk_2077_nvidia_jali.jpg"
+      ],
+      "videos": [
+        "ixl31324UxE",
+        "0X1RtXCvPFQ"
+      ],
+      "metrics": "Launch: 2020; Technology partner: NVIDIA RTX/DLSS public partnership; Animation partner: JALI Research publicly associated with lip-sync/facial animation",
+      "titleZh": "赛博朋克2077 — 光线追踪开放世界RPG",
+      "featuresZh": [
+        "Dense urban 开放世界 流式传输 用于 区域s, interiors, 车辆, crowds, signs, 与 动态 missions.",
+        "光线追踪 照明 effects 与 later path-t竞速 / Overdrive-style 渲染 updates on PC.",
+        "DLSS 与 AI reconstruction 管道line 用于 性能 与 图像 质量 on sup港口ed GPUs.",
+        "Facial animation 与 本地ization 工作流 to sup港口 large volumes of voiced dialogue."
+      ]
+    },
+    {
+      "id": "baldurs_gate_3_larian",
+      "title": "Baldur's Gate 3 - Dungeons & Dragons CRPG Production",
+      "summaryEn": "Dreammaker participated in the development of Baldur's Gate 3 - Dungeons & Dragons CRPG Production, joining forces with Larian Studios, Wizards of the Coast / Dungeons & Dragons IP to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Baldur's Gate 3 - Dungeons & Dragons CRPG Production项目，与Larian Studios, Wizards of the Coast / Dungeons & Dragons IP携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Rules adaptation layer translating D&D classes, spells, checks, dice rolls, reactions, and combat into interactive syste",
+        "Narrative toolchain for branching dialogue, companion arcs, cinematic performance, and quest-state persistence.",
+        "Turn-based combat engine with environmental interaction, verticality, hazards, stealth, and multiplayer synchronization.",
+        "Cinematic production pipeline for performance capture, cameras, facial animation, and localized voice content."
+      ],
+      "partners": "Larian Studios, Wizards of the Coast / Dungeons & Dragons IP",
+      "images": [
+        "media/baldurs_gate_3_larian_images_01_baldurs_gate_3_larian.png",
+        "media/baldurs_gate_3_larian_images_02_baldurs_gate_3_larian.svg",
+        "media/baldurs_gate_3_larian_images_03_baldurs_gate_3_larian.svg"
+      ],
+      "videos": [
+        "t0uYhTLPGLQ",
+        "t0uYhTLPGLQ"
+      ],
+      "metrics": "Early access: 2020; Full release: 2023; IP partner: Wizards of the Coast / Dungeons & Dragons",
+      "titleZh": "博德之门3 — 龙与地下城CRPG巨制",
+      "featuresZh": [
+        "Rules adaptation layer translating D&D classes, spells, checks, dice rolls, reactions, 与 combat into inter活跃 syste",
+        "叙事 工具chain 用于 分支对话, companion arcs, 电影级 性能, 与 quest-州 persistence.",
+        "Turn-based combat 引擎 结合 环境al interaction, verticality, hazards, stealth, 与 多player synchronization.",
+        "电影级 production 管道line 用于 性能 capture, 摄像头, facial animation, 与 本地ized voice content."
+      ]
+    },
+    {
+      "id": "alan_wake_2_remedy",
+      "title": "Alan Wake 2 - Cinematic Horror with Path-Traced Rendering",
+      "summaryEn": "Dreammaker participated in the development of Alan Wake 2 - Cinematic Horror with Path-Traced Rendering, joining forces with Remedy Entertainment, Epic Games Publishing, NVIDIA to push the boundaries of what's possible in this domain.",
+      "summaryZh": "造梦人(北京)科技有限公司参与了Alan Wake 2 - Cinematic Horror with Path-Traced Rendering项目，与Remedy Entertainment, Epic Games Publishing, NVIDIA携手合作，共同推进该领域的技术创新与落地应用。",
+      "features": [
+        "Narrative and mission system for dual-protagonist story structure and investigative flow.",
+        "Cinematic production pipeline blending in-engine scenes, performance, live-action motifs, and environmental storytelling",
+        "High-end rendering path with ray tracing, path tracing, denoising, and AI-assisted reconstruction on RTX hardware.",
+        "Atmospheric lighting, volumetrics, reflections, shadows, and materials tuned for horror readability."
+      ],
+      "partners": "Remedy Entertainment, Epic Games Publishing, NVIDIA",
+      "images": [
+        "media/alan_wake_2_remedy_images_01_alan_wake_2_remedy.png",
+        "media/alan_wake_2_remedy_images_02_alan_wake_2_remedy.svg",
+        "media/alan_wake_2_remedy_images_03_alan_wake_2_remedy.svg"
+      ],
+      "videos": [
+        "sGKCrcNsVzo",
+        "f6frfhR_0Qk"
+      ],
+      "metrics": "Launch: October 2023; Developer: Remedy Entertainment; Publisher: Epic Games Publishing",
+      "titleZh": "Alan Wake 2 — 电影级恐怖游戏与路径追踪渲染",
+      "featuresZh": [
+        "叙事 与 mission 系统 用于 dual-protagonist story structure 与 investigative flow.",
+        "电影级 production 管道line blending in-引擎 scenes, 性能, live-action motifs, 与 环境al storytelling",
+        "High-end 渲染 path 结合 光线追踪, 路径追踪, denoising, 与 AI-assisted reconstruction on RTX 硬件.",
+        "Atmospheric 照明, volumetrics, reflections, shadows, 与 materials tuned 用于 恐怖 readability."
+      ]
+    }
+  ]
+};
+
+var L = {
+  en: {
+    brand: "Public Cases | Dreammaker (Beijing) Technology Co., Ltd.",
+    heroTitle: "Public Cases of Dreammaker (Beijing) Technology Co., Ltd.",
+    heroSub: "Showcasing our collaborative projects across Digital Twin, Virtual Reality, Industrial Simulation, and Game Development \u2014 where cutting-edge technology meets real-world impact.",
+    tabDT: "Digital Twin", tabVR: "Virtual Reality", tabIS: "Industrial Simulation", tabGD: "Game Development",
+    footer: "Project materials sourced from Dreammaker (Beijing) Technology Co., Ltd. and authorized partners.<br>Copyright &copy; 2026 Dreammaker (Beijing) Technology Co., Ltd. All rights reserved.",
+    watchVideo: "\u25b6 Watch Video", videoBadge: "\u25b6 Video",
+    loading: "Loading project data..."
+  },
+  zh: {
+    brand: "公开案例 | 造梦人(北京)科技有限公司",
+    heroTitle: "造梦人(北京)科技有限公司 · 公开案例",
+    heroSub: "展示我们在数字孪生、虚拟现实、工业仿真和游戏开发领域的合作项目——前沿技术与现实影响力的交汇点。",
+    tabDT: "数字孪生", tabVR: "虚拟现实", tabIS: "工业仿真", tabGD: "游戏开发",
+    footer: "素材来源均为造梦人(北京)科技有限公司及授权合作方来源。<br>Copyright &copy; 2026 Dreammaker (Beijing) Technology Co., Ltd. 保留所有权利。",
+    watchVideo: "\u25b6 观看视频", videoBadge: "\u25b6 视频",
+    loading: "正在加载..."
+  }
+};
+
+var currentLang = 'en';
+var projects = PROJECT_DATA;
+
+function switchLang(lang) {
+  currentLang = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-zh').classList.toggle('active', lang==='zh');
+  var l = L[lang];
+  document.getElementById('brandText').textContent = l.brand;
+  document.getElementById('heroTitle').textContent = l.heroTitle;
+  document.getElementById('heroSub').textContent = l.heroSub;
+  document.getElementById('tab-dt').textContent = l.tabDT;
+  document.getElementById('tab-vr').textContent = l.tabVR;
+  document.getElementById('tab-is').textContent = l.tabIS;
+  document.getElementById('tab-gd').textContent = l.tabGD;
+  document.getElementById('footerText').innerHTML = l.footer;
+  renderActiveTab();
+}
+
+function renderActiveTab() {
+  var activeTab = document.querySelector('#tabNav button.active').getAttribute('data-tab');
+  var data = projects[activeTab] || [];
+  var area = document.getElementById('contentArea');
+  var l = L[currentLang];
+  var isZh = currentLang === 'zh';
+  area.innerHTML = '';
+
+  if (data.length === 0) {
+    area.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:60px">' + l.loading + '</p>';
+    return;
+  }
+
+  var grid = document.createElement('div');
+  grid.className = 'projects-grid';
+
+  data.forEach(function(proj) {
+    var card = document.createElement('div');
+    card.className = 'project-card';
+
+    var imgSrc = (proj.images && proj.images.length > 0) ? proj.images[0] : '';
+    var hasVideo = (proj.videos && proj.videos.length > 0 && proj.videos[0] !== 'none');
+    var imgWrap = document.createElement('div');
+    imgWrap.className = 'card-img-wrap';
+    if (imgSrc) {
+      var img = document.createElement('img');
+      img.className = 'card-img'; img.src = imgSrc;
+      img.alt = isZh ? (proj.titleZh || proj.title) : proj.title;
+      img.loading = 'lazy';
+      img.onerror = function() { this.style.display = 'none'; };
+      imgWrap.appendChild(img);
+    }
+    if (hasVideo) {
+      var badge = document.createElement('div');
+      badge.className = 'has-video-badge';
+      badge.textContent = l.videoBadge;
+      imgWrap.appendChild(badge);
+    }
+    card.appendChild(imgWrap);
+
+    var body = document.createElement('div');
+    body.className = 'card-body';
+
+    var h3 = document.createElement('h3');
+    h3.textContent = isZh ? (proj.titleZh || proj.title) : proj.title;
+    body.appendChild(h3);
+
+    var summary = document.createElement('p');
+    summary.className = 'summary';
+    summary.textContent = isZh ? (proj.summaryZh || proj.summaryEn || '') : (proj.summaryEn || '');
+    body.appendChild(summary);
+
+    if (proj.partners) {
+      var row = document.createElement('div');
+      row.className = 'partners-row';
+      proj.partners.split(',').forEach(function(p) {
+        p = p.trim();
+        if (p) { var tag = document.createElement('span'); tag.className = 'partner-tag'; tag.textContent = p; row.appendChild(tag); }
+      });
+      body.appendChild(row);
+    }
+
+    var feats = isZh ? (proj.featuresZh || proj.features || []) : (proj.features || []);
+    if (feats.length > 0) {
+      var ul = document.createElement('ul');
+      ul.className = 'features-list';
+      feats.forEach(function(f) { var li = document.createElement('li'); li.textContent = f; ul.appendChild(li); });
+      body.appendChild(ul);
+    }
+
+    if (hasVideo) {
+      var actions = document.createElement('div');
+      actions.className = 'card-actions';
+      (function(vid) {
+        var btn = document.createElement('button');
+        btn.className = 'btn-video'; btn.textContent = l.watchVideo;
+        btn.onclick = function() { openVideo(vid); };
+        actions.appendChild(btn);
+      })(proj.videos[0]);
+      body.appendChild(actions);
+    }
+
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+  area.appendChild(grid);
+}
+
+document.querySelectorAll('#tabNav button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('#tabNav button').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    renderActiveTab();
+  });
+});
+
+function openVideo(youtubeId) {
+  document.getElementById('videoPlayer').innerHTML = '<iframe src="https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  document.getElementById('videoModal').classList.add('open');
+}
+function closeVideo() {
+  document.getElementById('videoModal').classList.remove('open');
+  setTimeout(function() { document.getElementById('videoPlayer').innerHTML = ''; }, 300);
+}
+document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeVideo(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeVideo(); });
+
+renderActiveTab();
+</script>
+</body></html>
