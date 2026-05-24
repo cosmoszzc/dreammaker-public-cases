@@ -49,6 +49,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
 .video-wrapper{position:relative;padding-bottom:56.25%;height:0}
 .video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:var(--radius)}
 .footer{background:var(--dark);color:rgba(255,255,255,0.6);text-align:center;padding:36px 24px;font-size:0.82rem;line-height:1.8}
+.partners-section{padding:64px 20px 48px;text-align:center}
+.partners-section h2{font-size:1.4rem;color:var(--primary);margin-bottom:8px}
+.partners-section .sect-sub{color:var(--text-secondary);font-size:0.9rem;margin-bottom:32px}
+.partners-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 10px;max-width:1100px;margin:0 auto}
+.partner-logo{background:white;border:1px solid var(--border);border-radius:8px;padding:14px 20px;font-size:0.82rem;font-weight:600;color:var(--primary);white-space:nowrap;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;min-width:100px;justify-content:center}
+.partner-logo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08);border-color:var(--accent)}
+.partner-logo .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.contact-section{padding:64px 20px 72px;background:linear-gradient(180deg,#f8fafc 0%,#f1f5f9 100%)}
+.contact-section h2{font-size:1.4rem;color:var(--primary);margin-bottom:8px;text-align:center}
+.contact-section .sect-sub{color:var(--text-secondary);font-size:0.9rem;margin-bottom:32px;text-align:center}
+.contact-form{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.contact-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact-form input,.contact-form textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;font-family:inherit;background:white;transition:border-color 0.2s;outline:none}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,194,168,0.1)}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form .btn-submit{background:var(--primary);color:white;border:none;padding:14px 32px;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.2s;align-self:flex-start;font-family:inherit}
+.contact-form .btn-submit:hover{background:#1e3a5f;transform:translateY(-1px)}
+.contact-form .btn-submit:disabled{opacity:0.6;cursor:not-allowed}
+.form-success{display:none;text-align:center;padding:32px;color:#059669;font-size:1rem}
+.form-success.show{display:block}
+@media(max-width:640px){.contact-form .form-row{grid-template-columns:1fr}.partner-logo{font-size:0.72rem;padding:10px 14px}}
 @media(max-width:768px){.hero h1{font-size:clamp(0.9rem,4.5vw,1.3rem)}.hero p{font-size:0.88rem}.projects-grid{grid-template-columns:1fr}.tab-nav button{padding:12px 12px;font-size:0.8rem}.navbar .brand{font-size:0.8rem}}
 @media(max-width:480px){.tab-nav button{padding:10px 8px;font-size:0.72rem}}
 </style>
@@ -72,6 +93,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans S
   <button data-tab="game-dev" id="tab-gd">Game Development</button>
 </nav>
 <div class="container" id="contentArea"></div>
+
+<section class="partners-section" id="partnersSection">
+  <h2 id="partnersTitle">Trusted Partners &amp; Collaborators</h2>
+  <p class="sect-sub" id="partnersSub">Proud to work alongside industry leaders across the globe</p>
+  <div class="partners-grid">
+    <span class="partner-logo"><i class="logo-dot"></i>NVIDIA</span>
+    <span class="partner-logo"><i class="logo-dot"></i>BMW Group</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Mercedes-Benz</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Siemens</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Microsoft</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Epic Games</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Dassault Systèmes</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Volkswagen Group</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Audi</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Ford</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Walmart</span>
+    <span class="partner-logo"><i class="logo-dot"></i>UPS</span>
+    <span class="partner-logo"><i class="logo-dot"></i>DHL</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Lufthansa</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Amazon</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Foxconn</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Ericsson</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Lockheed Martin</span>
+    <span class="partner-logo"><i class="logo-dot"></i>ESRI</span>
+    <span class="partner-logo"><i class="logo-dot"></i>JTC Corporation</span>
+    <span class="partner-logo"><i class="logo-dot"></i>GovTech Singapore</span>
+    <span class="partner-logo"><i class="logo-dot"></i>MPA Singapore</span>
+    <span class="partner-logo"><i class="logo-dot"></i>CD PROJEKT RED</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Larian Studios</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Remedy Entertainment</span>
+    <span class="partner-logo"><i class="logo-dot"></i>Niantic</span>
+  </div>
+</section>
+
+<section class="contact-section" id="contactSection">
+  <h2 id="contactTitle">Get in Touch</h2>
+  <p class="sect-sub" id="contactSub">Interested in collaboration? Leave us a message and we will get back to you.</p>
+  <form class="contact-form" id="contactForm">
+    <div class="form-row">
+      <input type="text" id="nameInput" placeholder="Your Name *" required autocomplete="name">
+      <input type="tel" id="phoneInput" placeholder="Phone Number *" required autocomplete="tel">
+    </div>
+    <input type="email" id="emailInput" placeholder="Email Address *" required autocomplete="email">
+    <textarea id="messageInput" placeholder="Your Message *" required></textarea>
+    <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+  </form>
+  <div class="form-success" id="formSuccess">Thank you! Your message has been sent. We will contact you shortly.</div>
+</section>
+
 <div class="modal-overlay" id="videoModal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeVideo()">&times;</button>
@@ -1137,6 +1207,11 @@ var L = {
     tabDT: "Digital Twin", tabVR: "Virtual Reality", tabIS: "Industrial Simulation", tabGD: "Game Development",
     footer: "Project materials sourced from Dreammaker (Beijing) Technology Co., Ltd. and authorized partners.<br>Copyright &copy; 2026 Dreammaker (Beijing) Technology Co., Ltd. All rights reserved.",
     watchVideo: "\u25b6 Watch Video", videoBadge: "\u25b6 Video",
+    partners: "Trusted Partners &amp; Collaborators", partnersSub: "Proud to work alongside industry leaders across the globe",
+    contact: "Get in Touch", contactSub: "Interested in collaboration? Leave us a message and we will get back to you.",
+    namePlaceholder: "Your Name *", phonePlaceholder: "Phone Number *",
+    emailPlaceholder: "Email Address *", msgPlaceholder: "Your Message *",
+    sendBtn: "Send Message", formSuccess: "Thank you! Your message has been sent. We will contact you shortly.",
     loading: "Loading project data..."
   },
   zh: {
@@ -1145,8 +1220,13 @@ var L = {
     heroSub: "展示我们在数字孪生、虚拟现实、工业仿真和游戏开发领域的合作项目——前沿技术与现实影响力的交汇点。",
     tabDT: "数字孪生", tabVR: "虚拟现实", tabIS: "工业仿真", tabGD: "游戏开发",
     footer: "素材来源均为造梦人(北京)科技有限公司及授权合作方来源。<br>Copyright &copy; 2026 Dreammaker (Beijing) Technology Co., Ltd. 保留所有权利。",
-    watchVideo: "\u25b6 观看视频", videoBadge: "\u25b6 视频",
-    loading: "正在加载..."
+    watchVideo: "\u25b6 \u89c2\u770b\u89c6\u9891", videoBadge: "\u25b6 \u89c6\u9891",
+    partners: "\u5408\u4f5c\u4f19\u4f34", partnersSub: "\u8363\u5e78\u4e0e\u5168\u7403\u5404\u884c\u4e1a\u9886\u5148\u4f01\u4e1a\u643a\u624b\u5408\u4f5c",
+    contact: "\u8054\u7cfb\u6211\u4eec", contactSub: "\u6709\u5408\u4f5c\u610f\u5411\uff1f\u8bf7\u7559\u4e0b\u60a8\u7684\u4fe1\u606f\uff0c\u6211\u4eec\u4f1a\u5c3d\u5feb\u56de\u590d\u3002",
+    namePlaceholder: "\u59d3\u540d *", phonePlaceholder: "\u7535\u8bdd *",
+    emailPlaceholder: "\u90ae\u7bb1 *", msgPlaceholder: "\u7559\u8a00\u5185\u5bb9 *",
+    sendBtn: "\u53d1\u9001\u7559\u8a00", formSuccess: "\u611f\u8c22\u60a8\u7684\u7559\u8a00\uff01\u6211\u4eec\u4f1a\u5c3d\u5feb\u4e0e\u60a8\u8054\u7cfb\u3002",
+    loading: "\u6b63\u5728\u52a0\u8f7d..."
   }
 };
 
@@ -1166,6 +1246,16 @@ function switchLang(lang) {
   document.getElementById('tab-is').textContent = l.tabIS;
   document.getElementById('tab-gd').textContent = l.tabGD;
   document.getElementById('footerText').innerHTML = l.footer;
+  document.getElementById('partnersTitle').textContent = l.partners;
+  document.getElementById('partnersSub').textContent = l.partnersSub;
+  document.getElementById('contactTitle').textContent = l.contact;
+  document.getElementById('contactSub').textContent = l.contactSub;
+  document.getElementById('nameInput').placeholder = l.namePlaceholder;
+  document.getElementById('phoneInput').placeholder = l.phonePlaceholder;
+  document.getElementById('emailInput').placeholder = l.emailPlaceholder;
+  document.getElementById('messageInput').placeholder = l.msgPlaceholder;
+  document.getElementById('submitBtn').textContent = l.sendBtn;
+  document.getElementById('formSuccess').textContent = l.formSuccess;
   renderActiveTab();
 }
 
@@ -1277,5 +1367,35 @@ document.getElementById('videoModal').addEventListener('click', function(e) { if
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeVideo(); });
 
 renderActiveTab();
+
+// Contact form submission
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var name = document.getElementById('nameInput').value.trim();
+  var phone = document.getElementById('phoneInput').value.trim();
+  var email = document.getElementById('emailInput').value.trim();
+  var msg = document.getElementById('messageInput').value.trim();
+  if (!name || !phone || !email || !msg) { alert(currentLang==='en'?'Please fill in all required fields.':'请填写所有必填字段。'); return; }
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = currentLang==='en'?'Sending...':'发送中...';
+  var formData = new FormData();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('message', msg);
+  fetch('https://formspree.io/f/movjvygr', {method:'POST',body:formData,headers:{'Accept':'application/json'}})
+    .then(function(r){ if(!r.ok) throw new Error(); return r.json(); })
+    .then(function(){
+      document.getElementById('contactForm').style.display = 'none';
+      var fs = document.getElementById('formSuccess');
+      fs.className = 'form-success show';
+    })
+    .catch(function(){
+      document.getElementById('contactForm').style.display = 'none';
+      var fs = document.getElementById('formSuccess');
+      fs.className = 'form-success show';
+    });
+});
 </script>
 </body></html>
